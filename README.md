@@ -1,7 +1,8 @@
 # BubblePop
 This repsitory contains the scripts written for a Bubble Pop game I created in UNITY 2D. I created this game during a REU summer internship in a Human Computer Interaction Lab at the University of Florida. This read me document is for the game setting in UNITY as well as the individual scripts, methods, and logging. 
 
-Bubble Pop Game – Read Me
+Bubble Pop Game 
+
 UNITY...
 -	All canvases in the game should have a canvas scaler component set to 1440x2960, the canvases are named level_score
 -	Levels 2 – 6 have a level_score prefab that contains the following UI: level text, score text and the start button. 
@@ -13,6 +14,7 @@ UNITY...
 -	The shadow and New Sprite gameobjects are used to measure the distance between the bubbles, they would not affect game play if deleted.
  
 SCRIPTS...
+
 Combination Script: 
 -	The dist stack holds the values for the distance the bubble will move. 
 -	The size stack holds the values for the size the bubble will change to throughout the game level
@@ -36,6 +38,7 @@ hit.collider != null: if this “if” statement is entered. A pop sound will pl
 hit.collider == null: when this “if” statement is entered an error sound will play. A log will be added with AddLog() and the distance and size that was missed will be pushed back onto the stack ( dist.Push(dist.Peek()),sizes.Push(sizes.Peek())  ) for the user to touch again.
 
 METHODS...
+
 -	Enumerator ExecuteAfterTime(float time): this Coroutine creates a 1 second delay before the congrats scene of the game is loaded. Without this, the scene was loading too fast for the user.The method is called with StartCoroutine(ExecuteAfterTime(1)).
 -	newCombination(float distance, float size): New combination takes a float value of distance from the dist stack and a size value from the sizes stack. Inside new combination the size of the bubble changes and a new (X,Y) coordinate is being found and the bubble will move to that new coordinate. To find a new (X,Y) coordinate a random X2 values is first found and that value is passed into the Y2, Y3 methods. If the random X2 value and Y2 or Y3 values create a coordinate that is in the bounds of the screen, the bubble will be moved to that point. If the new point is out of range the code will find a random Y2 value and pass that value into the X2 and X3 methods. If the random Y2 and X2 or X3 values gives us a point that is on screen, the bubble will be moved to that point. If not, the code will stay in the while loop until a point that is in range of the screen is found. The random X2 and Y2 values both have to be less than the distance when subtract from X1 and Y2 respectively. 
 -	public float y2value(float distance, float x2): This method calculates a y2 value that will be used in the new X,Y coordinate.
