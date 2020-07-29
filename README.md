@@ -26,7 +26,7 @@ startingLevel and startButton Script:
 -	The starting level script is what makes the bubble gameObject disappear at the beginning (bubble.setActive(false)) of the level. The startButton script which is passed into the onClick component inside the UNITY inspector is what makes the bubble appear after the start button is pressed. Inside the startButton script the bubble is represented with the movingCircle gameobject.  
 
 Level 2 Script:
-The script for level 2 is almost identical to the combination script. The difference between the two is that the level 2 script keeps the bubble’s size at .48 will the combination script has the bubble alternating between sizes in the stack. It is like this because Level 2 is a finger calibration level and the size of the bubble will not change. 
+- The script for level 2 is almost identical to the combination script. The difference between the two is that the level 2 script keeps the bubble’s size at .48 will the combination script has the bubble alternating between sizes in the stack. It is like this because Level 2 is a finger calibration level and the size of the bubble will not change. 
 
 nextScene Script:
 -	This script contains a couple methods for loading different scenes but is main purpose is to set which level will load next after the congrats scene appears at the end of the previous level. The if statements inside the nextLevel() method is where this all happens. If the playerPrefs is set to 1, level 2 will load. If the playerPrefs is set to 2, level 3 will load. It will continue like this until level 6. After level 6 the exit scene will load.
@@ -50,9 +50,10 @@ METHODS...
 -	public void moveBubble(Vector2 position): this method is what moves the bubble to it’s new position. Also inside the method, the old X2, Y2 values are being recycled into X1, Y1. 
 
 Logging... 
-The data in this game is log by using a list. During the game information like the touch position, bubble position, distance, time, etc. will be added to a list called writeOut as a string. At the completion of the game the MakeLogger() method is called and exports everything from the list into a .csv file.
-          Methods:
--	AddLog(): everytime the button is hit or missed, addLog is called and it log the information of the game. When the start button is pressed AddLog, excutes the first if statement in the method which logs information of the touch of the start button, its position, etc. After the start button is gone and the bubble has appeared, AddLog() will only execute the second if statement which is logging information about the bubble.
+
+The data in this game is log by using a list. During the game information like the touch position, bubble position, distance, time, etc. will be added to a list called writeOut as a string. At the completion of the game the MakeLogger() method is called and exports everything from the list into a .csv file.  
+ Methods:
+ -	AddLog(): everytime the button is hit or missed, addLog is called and it log the information of the game. When the start button is pressed AddLog, excutes the first if   statement in the method which logs information of the touch of the start button, its position, etc. After the start button is gone and the bubble has appeared, AddLog() will only execute the second if statement which is logging information about the bubble.
 
 PlayerPrefs...
 -	Each level has a playerPrefs for score and for loading the next scene. Levels 3-6 have a separate script attached to them for the next scene playerPref. These scripts are named level 3, level 4, level 5 and level 6. The playerPref for score is inside each script and this allows the score to continue incrementing throughout the different scenes. 
